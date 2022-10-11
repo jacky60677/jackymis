@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--課程 : 第三周 前端網頁設計-->
+<!--班級 : 資管二B-->
+<!--學號 : 411017470-->
+<!--姓名 : 陳丞彥-->
+
+
+<html lang="zh-TW">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>陳丞彥的簡介</title>
+	<style type="text/css">
+		* { font-family:"標楷體"; margin-left:auto; margin-right:auto;}
+		h1 {color:rgb(30, 187, 245); font-size:60px;}
+		h2 {color:#2fe21b; font-size:40px;}
+		h3 {color: rgb(177, 8, 250); font-size:40px;}
+		table{ color: rgb(177, 8, 250);font-size:20px;}
+
+	</style>
+	<style>
+		html {
+			height: auto;
+
+		}
+		table{
+			backdrop-filter: blur(20px);
+			
+			
+		}
+		body {
+			background-image: url(http://www1.pu.edu.tw/~s1101747/CSP/photo/back.jpg);
+			background-attachment: fixed;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: cover;
+		}
+
+		div {
+			width: 300px;
+            border: 15px solid;
+            padding: 50px;
+            margin: 20px;
+		}
+	</style>
+	<script>
+		function change1() {
+  			document.getElementById("pic").src = "https://www1.pu.edu.tw/~s1101747/CSP/photo/11.png";
+  			
+		}
+
+		function change2() {
+  			document.getElementById("pic").src = "https://www1.pu.edu.tw/~s1101747/CSP/photo/9.png";
+  			
+		}
+	</script>
+
+</head>
+<?php echo date("Y-m-d") ?>
+<body >
+	
+	<table  width="90%" border="10" >
+		
+		<tr>
+			<th align="center" >
+				    <h1>陳丞彥</h1><hr>
+				    <h2>Cheng-Yen Chen</h2><hr>
+				    <img src="https://www1.pu.edu.tw/~s1101747/CSP/photo/11.png" id="pic" onmouseover="change2()" onmouseout="change1()"><br>
+			</th>
+		</tr>
+		<tr >	
+			<td>	
+				個人網頁:<a href="http://www1.pu.edu.tw/~s1101747/myself.html"target="_blank">http://www1.pu.edu.tw/~s1101747/myself.html</a><br>
+				<hr>
+				FB:<a href="https://www.facebook.com/profile.php?id=100005713202254"target="_blank">https://www.facebook.com/profile.php?id=10000571320225</a><br>
+				<hr>
+				Tel:0937653829<br>
+				<hr>
+				E-Mail:<a href="s1101747@pu.edu.tw">s1101747@pu.edu.tw</a><br>
+			</td>
+		</tr>
+
+		<tr>
+			<td align="center">
+				<h3>自我介紹</h3><br>
+				<div class="box" align="margin-right">
+						<p align="margin-right">
+					        <h4>
+						        &nbsp&nbsp&nbsp&nbsp我是陳丞彥，就讀靜宜大學資訊管理二年級，平易近人，熱心助人，喜愛台式綠茶和巧克力，喜歡音樂，曾學習過多項樂器，也參加過社團，平時喜歡觀看動畫片和漫畫及電腦遊戲，放鬆心情增加靈感，高中時參加校刊編輯的社團，得過金子獎，擅長電腦拆裝，持有相關證照，興趣是瀏覽電子相關新聞和拆裝電腦，未來工作想做電子相關產業。
+								目前加入校內的學生團體--行雲者基地，對我來說那裡不僅是學習得地方，更是我前進夢想的道路。
+					        </h4>
+				        </p>
+				</div>
+			</td>
+		</tr>
+
+		<tr>
+			<td align="center">
+				網頁音樂<br>
+				<audio src="https://www1.pu.edu.tw/~s1101747/CSP/audio/elephant.mp3"  autoplay controls loop>
+				</audio><br>
+			</td>
+		</tr>	
+		
+		<tr>
+			<td align="center" >
+				關於AMD Ryzen 7000 & AM5 上市前可以先知道的情報<br>
+				<iframe width="420" height="345" src="https://www.youtube.com/embed/PAB4Ellxse4" allowfullscreen></iframe>
+			</td>
+
+		</tr>
+
+		<tr>	
+			<td align="center" >
+				<img src="https://www1.pu.edu.tw/~s1101747/CSP/photo/photo.jpg" width="10%">
+
+			</td>
+		</tr>
+
+		<tr>
+			<td>
+				<p> 現在時間:{{ datatime }}</p>
+			</td>
+			
+		</tr>
+	
+	</table>
+
+</body>
+</html>
