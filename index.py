@@ -12,6 +12,7 @@ def index():
     homepage += "<a href=/myself target = _blank>個人網頁</a><br>"
     homepage += "<a href=/account target = _blank>帳號密碼</a><br>"
     homepage += "<a href=/text target = _blank>興趣何倫碼測驗結果</a><br>"
+    homepage += "<a href=/jobsearch target = _blank>個人求職自傳履歷網頁</a><br>"
     return homepage
 
 
