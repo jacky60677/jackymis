@@ -52,7 +52,7 @@ def text():
 	return render_template("text.html")
 
 @app.route("/jobsearch")
-def text():
+def jobsearch():
 	return render_template("jobsearch.html")
 
 #if __name__ == "__main__":
