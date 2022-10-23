@@ -11,6 +11,7 @@ def index():
     homepage += "<a href=/welcome?nick=Jacky target = _blank>傳送使用者暱稱</a><br>"
     homepage += "<a href=/myself target = _blank>個人網頁</a><br>"
     homepage += "<a href=/account target = _blank>帳號密碼</a><br>"
+    homepage += "<a href=/text target = _blank>興趣何倫碼測驗結果</a><br>"
     return homepage
 
 
@@ -45,6 +46,13 @@ def account():
     else:
         return render_template("account.html")
 
+@app.route("/text")
+def text():
+	return render_template("text.html")
+
+@app.route("/jobsearch")
+def text():
+	return render_template("jobsearch.html")
 
 #if __name__ == "__main__":
 #	app.run()
