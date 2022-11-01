@@ -20,7 +20,7 @@ def index():
     homepage += "<a href=/account target = _blank>帳號密碼</a><br>"
     homepage += "<a href=/text target = _blank>興趣何倫碼測驗結果</a><br>"
     homepage += "<a href=/jobsearch target = _blank>個人求職自傳履歷網頁</a><br>"
-    homepage += "<a href=/search target = _blank>查看課程</a><br>"
+    homepage += "<a href=/search target = _blank>選修課程查詢</a><br>"
     return homepage
 
 
@@ -70,11 +70,11 @@ def search():
 
 	Result = ""
 	if request.method == "POST":
-        Cond = request.form["Cond"]
+        keyword = request.form["keyword"]
          for doc in docs:
 			result = doc.to_dict()
 
-			if Cond in result["Course"]:
+			if keyword in result["Course"]:
 				Result += "文件內容：{}".format(doc.to_dict())
         	return result
     else:
