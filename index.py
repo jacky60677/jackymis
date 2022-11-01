@@ -67,11 +67,12 @@ def jobsearch():
 def search():
 	collection_ref = db.collection("111")
 	docs = collection_ref.get()
-
+	keyword = request.form["keyword"]
+    Cond = input(keyword) 
+	
 	Result = ""
 	if request.method == "POST":
-        keyword = request.form["keyword"]
-        Cond = input(keyword)
+        
          for doc in docs:
 			result = doc.to_dict()
 
