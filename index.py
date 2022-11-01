@@ -75,12 +75,12 @@ def search():
 	
 		Result = ""
         
-         for doc in docs:
+        for doc in docs:
 			result = doc.to_dict()
 
 			if Cond in result["Course"]:
 				Result += "文件內容：{}".format(doc.to_dict())
-        	#return result
+        return Result
     else:
         return render_template("search.html")
 
