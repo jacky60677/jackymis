@@ -83,7 +83,6 @@ def search():
         	#return result
     else:
         return render_template("search.html")
-	Result = ""
 
 	
 		
