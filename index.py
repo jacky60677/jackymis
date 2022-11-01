@@ -71,10 +71,11 @@ def search():
 	Result = ""
 	if request.method == "POST":
         keyword = request.form["keyword"]
+        Cond = input(keyword)
          for doc in docs:
 			result = doc.to_dict()
 
-			if keyword in result["Course"]:
+			if Cond in result["Course"]:
 				Result += "文件內容：{}".format(doc.to_dict())
         	return result
     else:
