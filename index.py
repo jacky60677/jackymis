@@ -73,14 +73,14 @@ def search():
 		keyword = request.form["keyword"]
     	Cond = input(keyword) 
 	
-		Result = ""
+		#Result = ""
         
         for doc in docs:
 			result = doc.to_dict()
 
 			if Cond in result["Course"]:
 				print("課程名稱：" + result["Course"]+"，教師姓名：" + result["Leacture"]+"，上課時間 : " + result["Time"]+"，在"+result["Room"]+"上課")
-        return Result
+        #return Result
     else:
         return render_template("search.html")
 
