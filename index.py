@@ -68,7 +68,7 @@ def search():
 	collection_ref = db.collection("111")
 	docs = collection_ref.get()
 
-	result = ""
+	Result = ""
 	if request.method == "POST":
         Cond = request.form["Cond"]
          for doc in docs:
