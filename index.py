@@ -67,18 +67,20 @@ def jobsearch():
 def search():
 	collection_ref = db.collection("111")
 	docs = collection_ref.get()
-	keyword = request.form["keyword"]
-    Cond = input(keyword) 
-	
-	Result = ""
+
 	if request.method == "POST":
+
+		keyword = request.form["keyword"]
+    	Cond = input(keyword) 
+	
+		Result = ""
         
          for doc in docs:
 			result = doc.to_dict()
 
 			if Cond in result["Course"]:
 				Result += "文件內容：{}".format(doc.to_dict())
-        	return result
+        	#return result
     else:
         return render_template("search.html")
 	Result = ""
