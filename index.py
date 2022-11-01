@@ -65,23 +65,23 @@ def jobsearch():
 
 @app.route("/search" , methods=["GET", "POST"])
 def search():
-	collection_ref = db.collection("111")
-	docs = collection_ref.get()
+	#collection_ref = db.collection("111")
+	#docs = collection_ref.get()
 
-	if request.method == "POST":
+	#if request.method == "POST":
 
-		keyword = request.form["keyword"]
-    	Cond = input(keyword) 
+		#keyword = request.form["keyword"]
+    	#Cond = input(keyword) 
 	
-		Result = ""
+		#Result = ""
         
-        for doc in docs:
-			result = doc.to_dict()
+        #for doc in docs:
+			#result = doc.to_dict()
 
-			if Cond in result["Course"]:
-				Result += "文件內容：{}".format(doc.to_dict())
-        return Result
-    else:
+			#if Cond in result["Course"]:
+				#Result += "文件內容：{}".format(doc.to_dict())
+        #return Result
+    #else:
         return render_template("search.html")
 
 	
