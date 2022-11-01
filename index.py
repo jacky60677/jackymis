@@ -72,17 +72,17 @@ def search():
 
 	if request.method == "POST":
 
-		keyword = request.form["keyword"]
+			keyword = request.form["keyword"]
     	#Cond = input(keyword) 
 	
-		Result = ""
+			Result = ""
         
-        for doc in docs:
-			result = doc.to_dict()
+    		for doc in docs:
+				result = doc.to_dict()
 
-			if keyword in result["Course"]:
-				Result += "課程名稱：" + result["Course"]#+"，教師姓名：" + result["Leacture"]+"，上課時間 : " + result["Time"]+"，在"+result["Room"]+"上課"
-        return Result
+				if keyword in result["Course"]:
+					Result += "課程名稱：" + result["Course"]#+"，教師姓名：" + result["Leacture"]+"，上課時間 : " + result["Time"]+"，在"+result["Room"]+"上課"
+        	return Result
     else:
         return render_template("search.html")
 
