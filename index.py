@@ -70,7 +70,7 @@ def search():
 
 	result = ""
 	if request.method == "POST":
-        course = request.form["Course"]
+        Cond = request.form["Cond"]
          for doc in docs:
 			result = doc.to_dict()
 
