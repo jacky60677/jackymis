@@ -1,3 +1,10 @@
+import firebase_admin
+from firebase_admin import credentials, firestore
+cred = credentials.Certificate("serviceAccountKey.json")
+firebase_admin.initialize_app(cred)
+db = firestore.client()
+
+
 from flask import Flask, render_template , request
 from datetime import datetime, timezone, timedelta
 
@@ -13,6 +20,7 @@ def index():
     homepage += "<a href=/account target = _blank>帳號密碼</a><br>"
     homepage += "<a href=/text target = _blank>興趣何倫碼測驗結果</a><br>"
     homepage += "<a href=/jobsearch target = _blank>個人求職自傳履歷網頁</a><br>"
+    homepage += "<br><a href=/read>讀取Firestore資料</a><br>"
     return homepage
 
 
@@ -54,6 +62,17 @@ def text():
 @app.route("/jobsearch")
 def jobsearch():
 	return render_template("jobsearch.html")
+
+@app.route("/read")
+def read():
+    Result = ""   
+	collection_ref = db.collection("111")
+	docs = collection_ref.get()
+	for doc in docs:
+		result = doc.to_dict()
+
+		if Cond in result["Course"]:
+			print("課程名稱：" + result["Course"]+"，教師姓名：" + result["Leacture"]+"，上課時間 : " + result["Time"]+"，在"+result["Room"]+"上課")	
 
 #if __name__ == "__main__":
 #	app.run()
