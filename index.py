@@ -70,14 +70,18 @@ def search():
 	collection_ref = db.collection("111")
 	docs = collection_ref.get()
 	if request.method == "POST":
-		keyword = request.form["keyword"]	
-		Result = ""      
-    		for doc in docs:
-			result = doc.to_dict()
-			if keyword in result["Course"]:
-				Result += "課程名稱：" + result["Course"]#+"，教師姓名：" + result["Leacture"]+"，上課時間 : " + result["Time"]+"，在"+result["Room"]+"上課"
-        	return Result
-    	else:
-        	return render_template("search.html")
+		keyword = request.form["keyword"]
+		#Cond = input(keyword) 
+	
+		Result = ""
+        
+		for doc in docs:
+			r = doc.to_dict()
+
+			if keyword in r["Course"]:
+				Result += "課程名稱：" + r["Course"] + "<br>" #+"，教師姓名：" + result["Leacture"]+"，上課時間 : " + result["Time"]+"，在"+result["Room"]+"上課"
+		return Result
+	else:
+		return render_template("search.html")
 #if __name__ == "__main__":
 #	app.run()
