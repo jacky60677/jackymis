@@ -84,5 +84,8 @@ def search():
 		return Result
 	else:
 		return render_template("search.html")
+
+	if Result == " " :
+		Result = "Sorry"
 #if __name__ == "__main__":
 #	app.run()
