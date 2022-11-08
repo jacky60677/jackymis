@@ -70,7 +70,8 @@ def search():
 	collection_ref = db.collection("111")
 	docs = collection_ref.get()
 	if request.method == "POST":
-		keyword = request.form["keyword"]
+		classkeyword = request.form["classkeyword"]
+		teacherkeyword = request.form["teacherkeyword"]
 		#Cond = input(keyword) 
 	
 		Result = ""
@@ -78,7 +79,7 @@ def search():
 		for doc in docs:
 			r = doc.to_dict()
 
-			if keyword in r["Course"]:
+			if classkeyword in r["Course"] and teacherkeyword in r["Leacture"]:
 				Result += "課程代碼 : " + r["Code"] + "<br>" + "課程名稱：" + r["Course"] + "<br>" +"，教師姓名：" + r["Leacture"]+ "<br>" +"，上課時間 : " + r["Time"]+ "<br>" +"，在"+r["Room"]+"上課"
 		return Result
 	else:
