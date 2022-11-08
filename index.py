@@ -80,7 +80,7 @@ def search():
 			r = doc.to_dict()
 
 			if classkeyword in r["Course"] and teacherkeyword in r["Leacture"]:
-				Result += "課程代碼 : " + r["Code"] + "<br>" + "課程名稱：" + r["Course"] + "<br>" +"，教師姓名：" + r["Leacture"]+ "<br>" +"，上課時間 : " + r["Time"]+ "<br>" +"，在"+r["Room"]+"上課"
+				Result += "課程代碼 : " + r["Code"] + "<br>" + "課程名稱：" + r["Course"] + "<br>" +"，教師姓名：" + r["Leacture"]+ "<br>" +"，上課時間 : " + r["Time"]+ "<br>" +"，在"+r["Room"]+"上課" + "<br>"
 		return Result
 	else:
 		return render_template("search.html")
