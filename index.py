@@ -99,15 +99,15 @@ def movie():
         MovieTitle = request.form["MovieTitle"]
         info = ""     
         collection_ref = db.collection("丞彥電影")
-        #docs = collection_ref.where("title","==", "夜鷹的單戀").get()
         docs = collection_ref.order_by("showDate").get()
-        for MovieTitle in docs:
-            if MovieTitle in doc.to_dict()["片名"]: 
-                info += "片名：" + doc.to_dict()["片名"] + "<br>" 
-                info += "海報：" + doc.to_dict()["picture"] + "<br>"
-                info += "影片介紹：" + doc.to_dict()["hyperlink"] + "<br>"
-                info += "片長：" + doc.to_dict()["showLength"] + " 分鐘<br>" 
-                info += "上映日期：" + doc.to_dict()["showDate"] + "<br><br>"           
+        for doc in docs:
+        	r=doc.to_dict()
+            if MovieTitle in r["片名"]: 
+                info += "片名：" + r["片名"] + "<br>" 
+                info += "海報：" + r["picture"] + "<br>"
+                info += "影片介紹：" + r["hyperlink"] + "<br>"
+                info += "片長：" + r["showLength"] + " 分鐘<br>" 
+                info += "上映日期：" + r["showDate"] + "<br><br>"           
         return info
     else:  
         return render_template("input.html")
