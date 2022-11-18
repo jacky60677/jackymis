@@ -98,7 +98,7 @@ def movie():
 	if request.method == "POST":
         MovieTitle = request.form["MovieTitle"]
         info = ""     
-        collection_ref = db.collection("電影")
+        collection_ref = db.collection("丞彥電影")
         #docs = collection_ref.where("title","==", "夜鷹的單戀").get()
         docs = collection_ref.order_by("showDate").get()
         for doc in docs:
