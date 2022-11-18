@@ -108,8 +108,8 @@ def movie():
                 		info += "片長：" + r["showLength"] + " 分鐘<br>" 
                 		info += "上映日期：" + r["showDate"] + "<br><br>"           
         	return info
-    else:  
-        return render_template("input.html")
+    	else:  
+        	return render_template("input.html")
 
 #if __name__ == "__main__":
 #	app.run()
