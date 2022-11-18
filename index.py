@@ -92,7 +92,7 @@ def search():
 		return render_template("search.html")
 
 	if Result == " " :
-		Result = "Sorry，沒找到"
+		Result = "Sorry"
 
 @app.route("/movienews")
 def movienews():
@@ -131,7 +131,7 @@ def movienews():
       			rate = "限制級(未滿十八歲之人不得觀賞)"
   		#print("電影分級:" + rate + "\n")
 
-        doc = {
+        doc = [
             "title": title,
             "rate": rate,
             "picture": picture,
@@ -139,7 +139,7 @@ def movienews():
             "showDate": showDate,
             "showLength": showLength,
             "lastUpdate": lastUpdate
-        }
+        ]
 
         doc_ref = db.collection("丞彥電影").document(movie_id)
         doc_ref.set(doc)
@@ -161,7 +161,6 @@ def movie():
 				info += "海報：" + r["picture"] + "<br>"
 				info += "片長：" + r["showLength"] + " 分鐘<br>" 
 				info += "上映日期：" + r["showDate"] + "<br><br>"
-
 				info += "電影分級：" + rate + "<br><br>"           
 		return info
 	else:  
