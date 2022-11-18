@@ -91,15 +91,14 @@ def search():
 
 @app.route("/movie",methods=["GET", "POST"])
 def movie():
-	'''
+	
 	collection_ref = db.collection("丞彥電影")
 	docs = collection_ref.get()
-	'''
+	
 	if request.method == "POST":
         	MovieTitle = request.form["MovieTitle"]
         	info = ""     
-        	collection_ref = db.collection("丞彥電影")
-        	docs = collection_ref.get()
+        	
         	for doc in docs:
         		r=doc.to_dict()
             	if MovieTitle in r["片名"]: 
