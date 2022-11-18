@@ -109,7 +109,7 @@ def movie_news():
         showDate = show[0:10]
         showLength = show[13:]
 
-        images = t.select("img")
+        images = item.select("img")
   		if len(images) == 1:
     		rate = "目前尚無分級資訊"
   		else:
