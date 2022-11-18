@@ -23,6 +23,7 @@ def index():
     homepage += "<a href=/text target = _blank>興趣何倫碼測驗結果</a><br>"
     homepage += "<a href=/jobsearch target = _blank>個人求職自傳履歷網頁</a><br>"
     homepage += "<a href=/search target = _blank>選修課程查詢</a><br>"
+    homepage += "<a href=/movie target = _blank>電影查詢</a><br>"
     return homepage
 
 
@@ -86,6 +87,30 @@ def search():
 		return render_template("search.html")
 
 	if Result == " " :
-		Result = "Sorry"
+		Result = "Sorry，沒找到"
+
+@app.route("/movie",methods=["GET", "POST"])
+def movie():
+	'''
+	collection_ref = db.collection("丞彥電影")
+	docs = collection_ref.get()
+	'''
+	if request.method == "POST":
+        MovieTitle = request.form["MovieTitle"]
+        info = ""     
+        collection_ref = db.collection("電影")
+        #docs = collection_ref.where("title","==", "夜鷹的單戀").get()
+        docs = collection_ref.order_by("showDate").get()
+        for doc in docs:
+            if MovieTitle in doc.to_dict()["片名"]: 
+                info += "片名：" + doc.to_dict()["片名"] + "<br>" 
+                info += "海報：" + doc.to_dict()["picture"] + "<br>"
+                info += "影片介紹：" + doc.to_dict()["hyperlink"] + "<br>"
+                info += "片長：" + doc.to_dict()["showLength"] + " 分鐘<br>" 
+                info += "上映日期：" + doc.to_dict()["showDate"] + "<br><br>"           
+        return info
+    else:  
+        return render_template("input.html")
+
 #if __name__ == "__main__":
 #	app.run()
