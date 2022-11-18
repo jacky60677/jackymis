@@ -1,4 +1,7 @@
-import firebase_admin,requests
+import requests
+from bs4 import BeautifulSoup
+
+import firebase_admin
 from firebase_admin import credentials, firestore
 
 cred = credentials.Certificate("serviceAccountKey.json")
@@ -10,8 +13,6 @@ db = firestore.client()
 from flask import Flask, render_template , request
 from datetime import datetime, timezone, timedelta
 
-
-from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
@@ -26,7 +27,7 @@ def index():
     homepage += "<a href=/text target = _blank>興趣何倫碼測驗結果</a><br>"
     homepage += "<a href=/jobsearch target = _blank>個人求職自傳履歷網頁</a><br>"
     homepage += "<a href=/search target = _blank>選修課程查詢</a><br>"
-    homepage += "<a href=/movienews target = _blank>新增電影清單</a><br>"
+    homepage += "<a href=/movienews>讀取開眼電影即將上映影片，寫入Firestore</a><br>"
     homepage += "<a href=/movie target = _blank>電影查詢</a><br>"
     return homepage
 
@@ -138,7 +139,7 @@ def movienews():
             "showDate": showDate,
             "showLength": showLength,
             "lastUpdate": lastUpdate
-         }
+        }
 
         doc_ref = db.collection("丞彥電影").document(movie_id)
         doc_ref.set(doc)
