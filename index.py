@@ -100,7 +100,7 @@ def movie():
 		for doc in docs:
 			r=doc.to_dict()
 			if MovieTitle in r["片名"]: 
-				info += "片名：" + "<a href = r["hyperlink"] > r["片名"]</a >"+"<br>" 
+				info +=  "片名：<a href=" + r["hyperlink"] + ">" + r["片名"] + "</a><br>" 
 				info += "海報：" + r["picture"] + "<br>"
 				info += "片長：" + r["showLength"] + " 分鐘<br>" 
 				info += "上映日期：" + r["showDate"] + "<br><br>"           
