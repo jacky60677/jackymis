@@ -143,7 +143,7 @@ def movienews():
 
         doc_ref = db.collection("丞彥電影").document(movie_id)
         doc_ref.set(doc)
-    return "近期上映電影已爬蟲及存檔完畢，網站最近更新日期為：" + lastUpdate 
+	return "近期上映電影已爬蟲及存檔完畢，網站最近更新日期為：" + lastUpdate 
 
 
 @app.route("/movie",methods=["GET", "POST"])
@@ -152,17 +152,17 @@ def movie():
 	docs = collection_ref.get()
 	if request.method == "POST":
 		MovieTitle = request.form["MovieTitle"]
-		info = ""     
-        rate = ""
+		info = ""   
+		rate = ""
 		for doc in docs:
 			r=doc.to_dict()
-			if MovieTitle in r["片名"]: 
-				info +=  "片名：<a href=" + r["hyperlink"] + ">" + r["片名"] + "</a><br>" 
+			if MovieTitle in r["片名"]:
+				info +=  "片名：<a href=" + r["hyperlink"] + ">" + r["片名"] + "</a><br>"
 				info += "海報：" + r["picture"] + "<br>"
-				info += "片長：" + r["showLength"] + " 分鐘<br>" 
+				info += "片長：" + r["showLength"] + " 分鐘<br>"
 				info += "上映日期：" + r["showDate"] + "<br><br>"
-				info += "電影分級：" + rate + "<br><br>"           
-		return info
+				info += "電影分級：" + rate + "<br><br>"
+				return info
 	else:  
 		return render_template("input.html")
 
