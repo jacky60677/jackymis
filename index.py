@@ -105,7 +105,7 @@ def movie():
 				info += "影片介紹：" + r["hyperlink"] + "<br>"
 				info += "片長：" + r["showLength"] + " 分鐘<br>" 
 				info += "上映日期：" + r["showDate"] + "<br><br>"           
-			return info
+		return info
 	else:  
 		return render_template("input.html")
 
