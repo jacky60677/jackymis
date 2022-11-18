@@ -23,6 +23,7 @@ def index():
     homepage += "<a href=/text target = _blank>興趣何倫碼測驗結果</a><br>"
     homepage += "<a href=/jobsearch target = _blank>個人求職自傳履歷網頁</a><br>"
     homepage += "<a href=/search target = _blank>選修課程查詢</a><br>"
+    homepage += "<a href=/movienews target = _blank>新增電影清單</a><br>"
     homepage += "<a href=/movie target = _blank>電影查詢</a><br>"
     return homepage
 
@@ -89,8 +90,8 @@ def search():
 	if Result == " " :
 		Result = "Sorry，沒找到"
 
-@app.route("/movie_news")
-def movie_news():
+@app.route("/movienews")
+def movienews():
     url = "http://www.atmovies.com.tw/movie/next/"
     Data = requests.get(url)
     Data.encoding = "utf-8"
