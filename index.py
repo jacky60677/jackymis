@@ -101,7 +101,7 @@ def movie():
         collection_ref = db.collection("丞彥電影")
         #docs = collection_ref.where("title","==", "夜鷹的單戀").get()
         docs = collection_ref.order_by("showDate").get()
-        for doc in docs:
+        for MovieTitle in docs:
             if MovieTitle in doc.to_dict()["片名"]: 
                 info += "片名：" + doc.to_dict()["片名"] + "<br>" 
                 info += "海報：" + doc.to_dict()["picture"] + "<br>"
