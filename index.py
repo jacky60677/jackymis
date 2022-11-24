@@ -148,23 +148,25 @@ def movienews():
 
 @app.route("/movie",methods=["GET", "POST"])
 def movie():
-	collection_ref = db.collection("丞彥電影")
-	docs = collection_ref.get()
 	if request.method == "POST":
+		collection_ref = db.collection("丞彥電影")
+		docs = collection_ref.order_by("showDate").get()
 		MovieTitle = request.form["MovieTitle"]
 		info = ""   
-		rate = ""
+	
 		for doc in docs:
 			r=doc.to_dict()
 			if MovieTitle in r["title"]:
 				info +=  "片名：<a href=" + r["hyperlink"] + ">" + r["title"] + "</a><br>"
 				info += "海報：" + r["picture"] + "<br>"
 				info += "片長：" + r["showLength"] + " 分鐘<br>"
-				info += "上映日期：" + r["showDate"] + "<br><br>"
+				info += "上映日期：" + r["showDate"] + "<br>"
 				info += "電影分級：" + r["rate"] + "<br><br>"
-				return info
+		if MovieTitle == "":
+			info += "查無此電影 <a href = http://www.atmovies.com.tw/movie/next/>前往官網</a>"
+		return info
 	else:  
 		return render_template("input.html")
 
-if __name__ == "__main__":
-	app.run()
+# if __name__ == "__main__":
+	# app.run()

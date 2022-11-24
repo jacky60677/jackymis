@@ -58,24 +58,11 @@ from datetime import datetime, timezone, timedelta
 
 app = Flask(__name__)
 
-@app.route("/")
-def index():
-    homepage = "<h1>陳丞彥Python網頁</h1>"
-    homepage += "<a href=/mis target = _blank>MIS</a><br>"
-    homepage += "<a href=/today target = _blank>顯示日期時間</a><br>"
-    homepage += "<a href=/welcome?nick=Jacky target = _blank>傳送使用者暱稱</a><br>"
-    homepage += "<a href=/myself target = _blank>個人網頁</a><br>"
-    homepage += "<a href=/account target = _blank>帳號密碼</a><br>"
-    homepage += "<a href=/text target = _blank>興趣何倫碼測驗結果</a><br>"
-    homepage += "<a href=/jobsearch target = _blank>個人求職自傳履歷網頁</a><br>"
-    homepage += "<a href=/search target = _blank>選修課程查詢</a><br>"
-    homepage += "<a href=/movienews>讀取開眼電影即將上映影片，寫入Firestore</a><br>"
-    homepage += "<a href=/movie target = _blank>電影查詢</a><br>"
-    return homepage
 @app.route("/movie",methods=["GET", "POST"])
 def movie():
   collection_ref = db.collection("丞彥電影")
   docs = collection_ref.get()
+
   if request.method == "POST":
     MovieTitle = request.form["MovieTitle"]
     info = ""   
@@ -83,14 +70,13 @@ def movie():
     for doc in docs:
       r=doc.to_dict()
       if MovieTitle in r["片名"]:
-        info +=  "片名：<a href=" + r["hyperlink"] + ">" + r["片名"] + "</a><br>"
+        info += "片名：<a href=" + r["hyperlink"] + ">" + r["片名"] + "</a><br>"
         info += "海報：" + r["picture"] + "<br>"
         info += "片長：" + r["showLength"] + " 分鐘<br>"
-        info += "上映日期：" + r["showDate"] + "<br><br>"
+        info += "上映日期：" + r["showDate"] + "<br>"
         info += "電影分級：" + r["rate"] + "<br><br>"
         return info
   else:  
     return render_template("input.html")
-
 if __name__ == "__main__":
- app.run()
+  app.run()
