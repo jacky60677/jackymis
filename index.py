@@ -172,6 +172,7 @@ def movie():
 @app.route("/webhook", methods=["POST"])
 def webhook():
 	req = request.get_json(force=True)
+	info = ""
 	if (action == "rateChoice"):
 		rate = req.get("queryResult").get("parameters").get("rate")
 		if (rate == "輔12級"):
