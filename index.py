@@ -174,10 +174,10 @@ def webhook():
 	req = request.get_json(force=True)
 	if (action == "rateChoice"):
 		rate = req.get("queryResult").get("parameters").get("rate")
-		if (rate == "輔12級"):
-			rate = "輔導級(未滿十二歲之兒童不得觀賞)"
-		elif (rate == "輔15級"):
-			rate = "輔導級(未滿十五歲之人不得觀賞)"
+			if (rate == "輔12級"):
+				rate = "輔導級(未滿十二歲之兒童不得觀賞)"
+			elif (rate == "輔15級"):
+				rate = "輔導級(未滿十五歲之人不得觀賞)"
 
 		info = "您選擇的電影分級是：" + rate + "，相關電影：\n"
 '''
