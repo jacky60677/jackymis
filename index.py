@@ -29,7 +29,7 @@ def index():
     homepage += "<a href=/search target = _blank>選修課程查詢</a><br>"
     homepage += "<a href=/movienews>讀取開眼電影即將上映影片，寫入Firestore</a><br>"
     homepage += "<a href=/movie target = _blank>電影查詢</a><br>"
-    #homepage += "<a href=/webhook target = _blank>webdemo</a><br>"
+    homepage += "<a href=/webhook target = _blank>webdemo</a><br>"
     return homepage
 
 
