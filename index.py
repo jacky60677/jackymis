@@ -172,6 +172,7 @@ def movie():
 @app.route("/webhook", methods=["POST"])
 def webhook():
 	req = request.get_json(force=True)
+	action = req.get("queryResult").get("action")
 	info = ""
 	if (action == "rateChoice"):
 		rate = req.get("queryResult").get("parameters").get("rate")
