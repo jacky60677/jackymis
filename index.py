@@ -203,5 +203,5 @@ def webhook():
 	
     return make_response(jsonify({"fulfillmentText": info}))
 
-if __name__ == "__main__":
-	app.run()
+#if __name__ == "__main__":
+#	app.run()
