@@ -29,7 +29,7 @@ def index():
     homepage += "<a href=/search target = _blank>選修課程查詢</a><br>"
     homepage += "<a href=/movienews>讀取開眼電影即將上映影片，寫入Firestore</a><br>"
     homepage += "<a href=/movie target = _blank>電影查詢</a><br>"
-    homepage += "<a href=/webhook target = _blank>webdemo</a><br>"
+    #homepage += "<a href=/webhook target = _blank>webdemo</a><br>"
     return homepage
 
 
@@ -175,8 +175,11 @@ def webhook():
     req = request.get_json(force=True)
     # fetch queryResult from json
     action =  req.get("queryResult").get("action")
-    msg =  req.get("queryResult").get("queryText")
-    info = "動作：" + action + "； 查詢內容：" + msg
+    #msg =  req.get("queryResult").get("queryText")
+    #info = "動作：" + action + "； 查詢內容：" + msg
+    if (action == "rateChoice"):
+        rate =  req.get("queryResult").get("parameters").get("rate")
+        info = "您選擇的電影分級是：" + rate
     return make_response(jsonify({"fulfillmentText": info}))
 
 # if __name__ == "__main__":
