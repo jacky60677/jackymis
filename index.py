@@ -189,7 +189,7 @@ def webhook():
             rate = "輔導級(未滿十二歲之兒童不得觀賞)"
         elif (rate == "輔15級"):
             rate = "輔導級(未滿十五歲之人不得觀賞)"
-        info = "您選擇的電影分級是：" + rate + "，相關電影：\n"
+        info += "您選擇的電影分級是：" + rate + "，相關電影：\n"
         
 		collection_ref = db.collection("丞彥電影")
 		docs = collection_ref.get()
