@@ -171,9 +171,8 @@ def movie():
 
 @app.route("/webhook", methods=["POST"])
 def webhook():
-	req = request.get_json(force=True)
-	action = req.get("queryResult").get("action")
 	if (action == "rateChoice"):
+		req = request.get_json(force=True)
 		rate = req.get("queryResult").get("parameters").get("rate")
 		if (rate == "輔12級"):
 			rate = "輔導級(未滿十二歲之兒童不得觀賞)"
