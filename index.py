@@ -172,9 +172,9 @@ def movie():
 @app.route("/webhook", methods=["POST"])
 def webhook():
     # build a request object
-    req = request.get_json(force=True)
+    #req = request.get_json(force=True)
     # fetch queryResult from json
-    action =  req.get("queryResult").get("action")
+    #action =  req.get("queryResult").get("action")
     #msg =  req.get("queryResult").get("queryText")
     #info = "動作：" + action + "； 查詢內容：" + msg
     '''
@@ -184,6 +184,8 @@ def webhook():
     
     '''
     if (action == "rateChoice"):
+    	req = request.get_json(force=True)
+    	action =  req.get("queryResult").get("action")
         rate =  req.get("queryResult").get("parameters").get("rate")
         if (rate == "輔12級"):
             rate = "輔導級(未滿十二歲之兒童不得觀賞)"
