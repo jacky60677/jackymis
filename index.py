@@ -10,7 +10,7 @@ firebase_admin.initialize_app(cred)
 db = firestore.client()
 
 
-from flask import Flask, render_template , request
+from flask import Flask, render_template , request , make_response , jsonify
 from datetime import datetime, timezone, timedelta
 
 
@@ -29,6 +29,7 @@ def index():
     homepage += "<a href=/search target = _blank>選修課程查詢</a><br>"
     homepage += "<a href=/movienews>讀取開眼電影即將上映影片，寫入Firestore</a><br>"
     homepage += "<a href=/movie target = _blank>電影查詢</a><br>"
+    homepage += "<a href=/webhook target = _blank>webdemo</a><br>"
     return homepage
 
 
@@ -167,6 +168,16 @@ def movie():
 		return info
 	else:  
 		return render_template("input.html")
+
+@app.route("/webhook", methods=["POST"])
+def webhook():
+    # build a request object
+    req = request.get_json(force=True)
+    # fetch queryResult from json
+    action =  req.get("queryResult").get("action")
+    msg =  req.get("queryResult").get("queryText")
+    info = "動作：" + action + "； 查詢內容：" + msg
+    return make_response(jsonify({"fulfillmentText": info}))
 
 # if __name__ == "__main__":
 	# app.run()
