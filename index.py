@@ -227,10 +227,10 @@ def webhook():
 			MaxT = json.loads(Data.text)["records"]["location"][0]["weatherElement"][4]["time"][0]["parameter"]["parameterName"]
 			info = city + "的天氣是" + Weather + "，降雨機率：" + Rain + "%"
 			info += "，溫度：" + MinT + "-" + MaxT + "度"
-		return info	
-	else:
+		#return info	
+	#else:
 		#return render_template("webhook.html")
-		return make_response(jsonify({"fulfillmentText": info}))
+	return make_response(jsonify({"fulfillmentText": info}))
 
 #if __name__ == "__main__":
 #	app.run()
